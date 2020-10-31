@@ -26,12 +26,25 @@ def create_movie(title, overview, release_date, poster_path):
     return movie
 
 
+def get_movies():
+    """Return all movies"""
+
+    # return Movie.query.all() - single use
+    return db.session.query(Movie).all()
+
+
 def create_rating(user, movie, score):
     """ Creates movie rating"""
     rating = Rating(user=user, movie=movie, score=score)
     db.session.add(rating)
     db.session.commit()
     return rating
+
+
+def get_movie_by_id(movie_id):
+    """Return movie by id"""
+    # return db.session.query(Movie).filter(Movie.movie_id == movie_id).one()
+    return Movie.query.get(movie_id)
 
 
 if __name__ == '__main__':
