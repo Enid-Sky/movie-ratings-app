@@ -14,6 +14,23 @@ def create_user(email, password):
     return user
 
 
+def get_user_email():
+    """Return user email"""
+
+    # return User.query.filter(User.email == email).one() - all users hence not this one.
+    return User.query.all()
+
+
+def get_user_id(user_id):
+    """Get user by id"""
+    return User.query.get(user_id)
+
+
+def get_user_by_email(email):
+
+    return User.query.filter(User.email == email).first()
+
+
 def create_movie(title, overview, release_date, poster_path):
     """Creates a movie """
 
